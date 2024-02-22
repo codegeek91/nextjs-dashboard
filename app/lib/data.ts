@@ -20,12 +20,12 @@ export async function fetchRevenue() {
     // Artificially delay a response for demo purposes.
     // Don't do this in production :)
 
-    console.log('Fetching revenue data...');
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    console.log('fetchRevenue() called');
+    //await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const data = await sql<Revenue>`SELECT * FROM revenue`;
 
-    console.log('Data fetch completed after 3 seconds.');
+    //console.log('Data fetch completed after 3 seconds.');
 
     return data.rows;
   } catch (error) {
@@ -35,6 +35,7 @@ export async function fetchRevenue() {
 }
 
 export async function fetchLatestInvoices() {
+  console.log('fetchLatestInvoices() called');
   noStore();
   try {
     const data = await sql<LatestInvoiceRaw>`
@@ -56,6 +57,7 @@ export async function fetchLatestInvoices() {
 }
 
 export async function fetchCardData() {
+  console.log('fetchCardData() called');
   noStore();
   try {
     // You can probably combine these into a single SQL query
